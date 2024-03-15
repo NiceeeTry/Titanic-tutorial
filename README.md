@@ -1,4 +1,4 @@
-
+[![Tests are](https://github.com/NiceeeTry/titanic-tutorial/actions/workflows/python-app.yml/badge.svg)](https://github.com/NiceeeTry/titanic-tutorial/actions/workflows/python-app.yml)
 ## Usage
 ```
 Usage: main.py [OPTIONS] INPUT_PATH TEST_PATH
