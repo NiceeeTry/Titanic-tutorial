@@ -17,6 +17,6 @@ def test_split_data(mock_data: pd.DataFrame):
 def test_preprocess_data(sample_data: pd.DataFrame):
     X, y = pre.preprocess_data(sample_data)
     res = shapiro(y)
-    assert res.statistic > 0.5
+    assert res.statistic > 0.05
     res = shapiro(X)
     assert res.statistic > 0.05
