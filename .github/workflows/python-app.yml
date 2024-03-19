@@ -31,4 +31,4 @@ jobs:
     - name: Test with pytest
       run: poetry run pytest
     - name: MyPy
-      run: poetry run mypy titanic.main.py
+      run: poetry run mypy ./titanic/main.py
