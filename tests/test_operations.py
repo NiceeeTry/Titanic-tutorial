@@ -3,8 +3,8 @@ import os
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 
-from titanic_tutorial import operations as op
-from titanic_tutorial import preprocess as pre
+from titanic import operations as op
+from titanic import preprocess as pre
 
 
 def test_train(sample_data: pd.DataFrame):

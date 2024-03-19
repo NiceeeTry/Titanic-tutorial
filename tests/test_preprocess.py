@@ -1,7 +1,7 @@
 import pandas as pd
 from scipy.stats import shapiro
 
-from titanic_tutorial import preprocess as pre
+from titanic import preprocess as pre
 
 
 def test_split_data(mock_data: pd.DataFrame):
