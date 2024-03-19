@@ -1,5 +1,7 @@
 """This module provides functions for model training and data prediction."""
 
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
@@ -27,7 +29,7 @@ def train(X_data: np.ndarray, Y_data: np.ndarray) -> RandomForestClassifier:
 
 
 def predict(
-    clf: RandomForestClassifier, data: np.ndarray, test_data: pd.DataFrame, result_path: str
+    clf: RandomForestClassifier, data: np.ndarray, test_data: pd.DataFrame, result_path: Path
 ) -> np.ndarray:
     """Creates predictions and saves them to a CSV file."""
     predictions = clf.predict(data)
