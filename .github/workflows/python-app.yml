@@ -29,7 +29,6 @@ jobs:
         pip install poetry
         poetry install
     - name: Test with pytest
-      run: |
-        poetry run pytest
+      run: poetry run pytest
     - name: MyPy
-        poetry run mypy titanic.main.py
+      run: poetry run mypy titanic.main.py
