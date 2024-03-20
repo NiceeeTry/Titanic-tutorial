@@ -43,43 +43,6 @@ def sample_data() -> pd.DataFrame:
     return titanic_df
 
 
-# @pytest.fixture
-# @given(
-#     st.lists(st.integers(min_value=1, max_value=100), min_size=8, max_size=8),
-#     st.lists(st.integers(min_value=0, max_value=1), min_size=8, max_size=8),
-#     st.lists(st.integers(min_value=1, max_value=3), min_size=8, max_size=8),
-#     st.lists(st.text(), min_size=8, max_size=8),
-#     st.lists(st.sampled_from(["male", "female"]), min_size=8, max_size=8),
-#     st.lists(st.floats(allow_nan=True), min_size=8, max_size=8),
-#     st.lists(st.integers(min_value=0, max_value=8), min_size=8, max_size=8),
-#     st.lists(st.integers(min_value=0, max_value=6), min_size=8, max_size=8),
-#     st.lists(st.text(), min_size=8, max_size=8),
-#     st.lists(st.floats(allow_nan=True), min_size=8, max_size=8),
-#     st.lists(st.text(), min_size=8, max_size=8),
-#     st.lists(st.sampled_from(["S", "C", "Q"]), min_size=8, max_size=8)
-# )
-# def sample_data(
-#     PassengerId, Survived, Pclass, Name, Sex, Age, SibSp, Parch, Ticket, Fare, Cabin, Embarked
-# ) -> pd.DataFrame:
-#     titanic_df = pd.DataFrame(
-#         {
-#             "PassengerId": PassengerId,
-#             "Survived": Survived,
-#             "Pclass": Pclass,
-#             "Name": Name,
-#             "Sex": Sex,
-#             "Age": Age,
-#             "SibSp": SibSp,
-#             "Parch": Parch,
-#             "Ticket": Ticket,
-#             "Fare": Fare,
-#             "Cabin": Cabin,
-#             "Embarked": Embarked,
-#         }
-#     )
-#     return titanic_df
-
-
 @pytest.fixture
 def sample_test() -> pd.DataFrame:
     test_data = pd.DataFrame(
