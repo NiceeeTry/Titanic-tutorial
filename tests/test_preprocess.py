@@ -17,46 +17,51 @@ def test_split_data(mock_data: pd.DataFrame):
     assert 0.15 <= test_length / input_length <= 0.25
 
 
-# @given(
-#     st.lists(st.integers(min_value=1, max_value=100), min_size=8, max_size=8),
-#     st.lists(st.integers(min_value=0, max_value=1), min_size=8, max_size=8),
-#     st.lists(st.integers(min_value=1, max_value=3), min_size=8, max_size=8),
-#     st.lists(st.text(), min_size=8, max_size=8),
-#     st.lists(st.sampled_from(["male", "female"]), min_size=8, max_size=8),
-#     st.lists(st.floats(allow_nan=True), min_size=8, max_size=8),
-#     st.lists(st.integers(min_value=0, max_value=8), min_size=8, max_size=8),
-#     st.lists(st.integers(min_value=0, max_value=6), min_size=8, max_size=8),
-#     st.lists(st.text(), min_size=8, max_size=8),
-#     st.lists(st.floats(allow_nan=True), min_size=8, max_size=8),
-#     st.lists(st.text(), min_size=8, max_size=8),
-#     st.lists(st.sampled_from(["S", "C", "Q"]), min_size=8, max_size=8)
-# )
-# def test_preprocess_data(PassengerId, Survived, Pclass, Name, Sex, Age, SibSp, Parch, Ticket, Fare, Cabin, Embarked):
-#     titanic_df = pd.DataFrame(
-#         {
-#             "PassengerId": PassengerId,
-#             "Survived": Survived,
-#             "Pclass": Pclass,
-#             "Name": Name,
-#             "Sex": Sex,
-#             "Age": Age,
-#             "SibSp": SibSp,
-#             "Parch": Parch,
-#             "Ticket": Ticket,
-#             "Fare": Fare,
-#             "Cabin": Cabin,
-#             "Embarked": Embarked,
-#         }
-#     )
-#     X, y = pre.preprocess_data(titanic_df)
-#     res = shapiro(y)
-#     assert res.statistic > 0.05
-#     res = shapiro(X)
-#     assert res.statistic > 0.05
-
-
-def test_preprocess_data(mock_data: pd.DateOffset):
-    X, y = pre.preprocess_data(mock_data)
+@given(
+    st.lists(st.integers(min_value=1, max_value=100), min_size=8, max_size=8),
+    st.lists(st.integers(min_value=0, max_value=1), min_size=8, max_size=8),
+    st.lists(st.integers(min_value=1, max_value=3), min_size=8, max_size=8),
+    st.lists(st.text(), min_size=8, max_size=8),
+    st.lists(st.sampled_from(["male", "female"]), min_size=8, max_size=8),
+    st.lists(st.floats(min_value=0.5, max_value=100), min_size=8, max_size=8),
+    st.lists(st.integers(min_value=0, max_value=8), min_size=8, max_size=8),
+    st.lists(st.integers(min_value=0, max_value=6), min_size=8, max_size=8),
+    st.lists(st.text(), min_size=8, max_size=8),
+    st.lists(st.floats(min_value=4, max_value=130), min_size=8, max_size=8),  # fare
+    st.lists(st.text(), min_size=8, max_size=8),
+    st.lists(st.sampled_from(["S", "C", "Q"]), min_size=8, max_size=8),
+)
+def test_preprocess_data(
+    PassengerId: list,
+    Survived: list,
+    Pclass: list,
+    Name: list,
+    Sex: list,
+    Age: list,
+    SibSp: list,
+    Parch: list,
+    Ticket: list,
+    Fare: list,
+    Cabin: list,
+    Embarked: list,
+):
+    titanic_df = pd.DataFrame(
+        {
+            "PassengerId": PassengerId,
+            "Survived": Survived,
+            "Pclass": Pclass,
+            "Name": Name,
+            "Sex": Sex,
+            "Age": Age,
+            "SibSp": SibSp,
+            "Parch": Parch,
+            "Ticket": Ticket,
+            "Fare": Fare,
+            "Cabin": Cabin,
+            "Embarked": Embarked,
+        }
+    )
+    X, y = pre.preprocess_data(titanic_df)
     res = shapiro(y)
     assert res.statistic > 0.05
     res = shapiro(X)
